@@ -1,14 +1,8 @@
 ﻿using AventStack.ExtentReports;
 using BackEndAutomation.Rest.Calls;
 using BackEndAutomation.Rest.DataManagement;
-using OpenQA.Selenium;
 using Reqnroll;
 using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BackEndAutomation.Tests.BBDTests
 {

@@ -1,11 +1,19 @@
 ﻿using AventStack.ExtentReports;
 using NUnit.Framework;
 using Reqnroll;
+using System;
 
 namespace BackEndAutomation.Utilities
 {
+    public enum LogStatuses
+    {
+        Info,
+        Warning,
+        Debug
+    }
     public class UtilitiesMethods
     {
+        private static Random random = new Random();
         public static void AssertEqual<T>(T expected, T actual, string message, ScenarioContext scenarioContext)
         {
             ExtentTest _test = scenarioContext.Get<ExtentTest>("ExtentTest");
@@ -46,12 +54,25 @@ namespace BackEndAutomation.Utilities
                 Logger.Log.Debug(message);
             }
         }
-    }
+        public static string GenerateOrderNumber()
+        {
+            string prefix = "ORD";
+            string datePart = DateTime.Now.ToString("yyyyMMdd");
+            string randomPart = GenerateRandomString(6);
+            return $"{prefix}-{datePart}-{randomPart}";
+        }
+        private static string GenerateRandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            char[] result = new char[length];
 
-    public enum LogStatuses
-    {
-        Info,
-        Warning,
-        Debug
+            for (int i = 0; i < length; i++)
+            {
+                result[i] = chars[random.Next(chars.Length)];
+            }
+
+            return new string(result);
+        }
     }
+        
 }

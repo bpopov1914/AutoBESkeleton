@@ -115,9 +115,11 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Online Shop")]
+        [NUnit.Framework.CategoryAttribute("Login")]
         public async System.Threading.Tasks.Task OnlineShop()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "Login"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Online Shop", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 11
@@ -135,6 +137,54 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
 #line 13
  await testRunner.ThenAsync("validate user is logged in", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Add Product")]
+        [NUnit.Framework.CategoryAttribute("Products")]
+        [NUnit.Framework.TestCaseAttribute("\"2000\"", "\"Product 1\"", "5", "25.50", "\"BP Description product 1\"", null)]
+        [NUnit.Framework.TestCaseAttribute("\"2001\"", "\"Product 2\"", "14", "22.99", "\"BP Description product 2\"", null)]
+        [NUnit.Framework.TestCaseAttribute("\"2002\"", "\"Product 3\"", "13", "30.00", "\"BP Description product 3\"", null)]
+        [NUnit.Framework.TestCaseAttribute("\"2003\"", "\"Product 4\"", "11", "20.55", "\"BP Description product 4\"", null)]
+        [NUnit.Framework.TestCaseAttribute("\"2004\"", "\"Product 5\"", "14", "5.15", "\"BP Description product 5\"", null)]
+        public async System.Threading.Tasks.Task AddProduct(string product_Id, string name, string quantity, string price, string description, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "Products"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("product_id", product_Id);
+            argumentsOfScenario.Add("name", name);
+            argumentsOfScenario.Add("quantity", quantity);
+            argumentsOfScenario.Add("price", price);
+            argumentsOfScenario.Add("description", description);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Add Product", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 15
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 16
+ await testRunner.WhenAsync("online shop login with \"admin3\" username and \"admin123\" password", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 17
+ await testRunner.WhenAsync(string.Format("Product with product_id:\"{0}\", name:\"{1}\", quantity:{2}, price:{3} and descriptio" +
+                            "n:\"{4}\" is added", product_Id, name, quantity, price, description), ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 18
+ await testRunner.ThenAsync("the response message is \"Product added successfully\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

@@ -1,4 +1,7 @@
-﻿using RestSharp;
+﻿using AventStack.ExtentReports.Gherkin.Model;
+using RestSharp;
+using System.Diagnostics;
+using System.Xml.Linq;
 
 namespace BackEndAutomation.Rest.Calls
 {
@@ -123,6 +126,21 @@ namespace BackEndAutomation.Rest.Calls
             requestOnlineShop.AddParameter("password", password);
             RestResponse response = client.Execute(requestOnlineShop);
             Console.WriteLine(response.Content);
+            return response;
+        }
+
+        public RestResponse AddProduct(string token, string parameters)
+        {
+            var options = new RestClientOptions("https://testonlineshop.onrender.com")
+            {
+                Timeout = TimeSpan.FromSeconds(120),
+            };
+            var client = new RestClient(options);
+            var request = new RestRequest($"/products/add?{parameters}", Method.Post);
+            request.AddHeader("Authorization", "Bearer "+token);
+            RestResponse response = client.Execute(request);
+            Console.WriteLine(response.Content);
+
             return response;
         }
     }
