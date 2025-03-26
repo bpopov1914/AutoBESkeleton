@@ -18,7 +18,6 @@ namespace BackEndAutomation.Tests.BBDTests
 
         private RestCalls restCalls = new RestCalls();
         private ResponseDataExtractors extractResponseData = new ResponseDataExtractors();
-        private RestResponse userLoginResponse, userProfileDetailsResponse, userFollowResponse, userUnfollowResponse;
         private readonly ScenarioContext _scenarioContext;
         private ExtentTest _test;
 
