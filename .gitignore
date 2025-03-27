@@ -17,6 +17,9 @@ obj/
 
 # Visual Studio working files
 .vs/
+*.sqlite-journal
+/.vs/slnx.sqlite
+
 
 # Auto-generated files
 *.dll
