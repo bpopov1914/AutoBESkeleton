@@ -55,3 +55,6 @@ $RECYCLE.BIN/
 *.bak
 *.swp
 ~*
+/.vs/VSWorkspaceState.json
+/.vs/AutoBESkeleton/v17/DocumentLayout.json
+/.vs/AutoBESkeleton/v17/.wsuo
